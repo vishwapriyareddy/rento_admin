@@ -13,7 +13,7 @@ class CategoryScreen extends StatelessWidget {
     SideBarWidget _sidebar = SideBarWidget();
 
     return AdminScaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.black87,

@@ -23,7 +23,7 @@ class CategoryCard extends StatelessWidget {
         height: 120,
         width: 120,
         child: Card(
-          //  color: Colors.orangeAccent.withOpacity(.9),
+          //  color: Colors.grey[100],
           elevation: 4,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -37,7 +37,9 @@ class CategoryCard extends StatelessWidget {
                     child: Image.network(document.get('image')),
                   ),
                   FittedBox(
-                      fit: BoxFit.contain, child: Text(document.get('name'))),
+                      fit: BoxFit.contain,
+                      child: Text(document.get('name'),
+                          style: TextStyle(fontWeight: FontWeight.bold))),
                 ],
               ),
             ),

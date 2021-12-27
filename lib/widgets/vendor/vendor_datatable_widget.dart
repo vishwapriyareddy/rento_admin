@@ -89,32 +89,31 @@ class _VendorDataTableState extends State<VendorDataTable> {
               }
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
-              } else {
-                return ScrollConfiguration(
-                  behavior: MyCustomScrollBehavior(),
-                  child: SingleChildScrollView(
-                    controller: controller,
-                    scrollDirection: Axis.horizontal,
-                    child: DataTable(
-                      columns: const <DataColumn>[
-                        DataColumn(label: Text('Active/Inactive')),
-                        DataColumn(label: Text('Top Picked')),
-                        DataColumn(label: Text('Service Name')),
-                        DataColumn(label: Text('Service rating')),
-                        DataColumn(label: Text('Total Services')),
-                        DataColumn(label: Text('Mobile')),
-                        DataColumn(label: Text('Email')),
-                        DataColumn(label: Text('View Details')),
-                      ],
-                      rows: _vendorDetailrows(snapshot.data!, _services),
-                      showBottomBorder: true,
-                      dataRowHeight: 60,
-                      headingRowColor:
-                          MaterialStateProperty.all(Colors.grey[200]),
-                    ),
-                  ),
-                );
               }
+              return ScrollConfiguration(
+                behavior: MyCustomScrollBehavior(),
+                child: SingleChildScrollView(
+                  controller: controller,
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                    columns: const <DataColumn>[
+                      DataColumn(label: Text('Active/Inactive')),
+                      DataColumn(label: Text('Top Picked')),
+                      DataColumn(label: Text('Service Name')),
+                      DataColumn(label: Text('Service rating')),
+                      DataColumn(label: Text('Total Services')),
+                      DataColumn(label: Text('Mobile')),
+                      DataColumn(label: Text('Email')),
+                      DataColumn(label: Text('View Details')),
+                    ],
+                    rows: _vendorDetailrows(snapshot.data!, _services),
+                    showBottomBorder: true,
+                    dataRowHeight: 60,
+                    headingRowColor:
+                        MaterialStateProperty.all(Colors.grey[200]),
+                  ),
+                ),
+              );
             }),
       ],
     );
@@ -134,7 +133,7 @@ class _VendorDataTableState extends State<VendorDataTable> {
                 : Icon(
                     Icons.remove_circle,
                     color: Colors.red,
-                  ))),
+                  ))), 
         DataCell(IconButton(
             onPressed: () {
               services.updateTopPickedStatus(
