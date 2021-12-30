@@ -4,10 +4,15 @@ import 'package:rento_admin/widgets/category/category_list_widget.dart';
 import 'package:rento_admin/widgets/category/category_upload_widget.dart';
 import 'package:rento_admin/widgets/sidebar.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   static const String id = 'category-screen';
   const CategoryScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     SideBarWidget _sidebar = SideBarWidget();

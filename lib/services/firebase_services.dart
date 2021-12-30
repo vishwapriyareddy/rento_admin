@@ -47,6 +47,11 @@ class FirebaseServices {
     return downloadUrl;
   }
 
+//Category(new code)
+  Future<void> saveCategory(Map<String, dynamic> data) {
+    return category.doc(data['name']).set(data);
+  }
+
   Future<void> confirmDeleteDialog({title, message, context, id}) async {
     return showDialog<void>(
       context: context,

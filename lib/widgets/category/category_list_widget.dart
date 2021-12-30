@@ -12,25 +12,27 @@ class CategoryListWidget extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: StreamBuilder<QuerySnapshot?>(
-        stream: _services.category.snapshots(),
-        builder:
-            (BuildContext context, AsyncSnapshot<QuerySnapshot?> snapshot) {
-          if (snapshot.hasError) {
-            return Text('Something Went Wrong');
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-          return Wrap(
-            direction: Axis.horizontal,
-            children: [
-              ...snapshot.data!.docs.map((DocumentSnapshot document) {
-                return CategoryCard(document: document);
-              }).toList()
-            ],
-          );
-        },
-      ),
+          stream: _services.category.snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot?> snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something Went Wrong');
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: LinearProgressIndicator());
+            }
+            if (snapshot.data!.size == 0) {
+              return Text('No Categories Added');
+            }
+            return Wrap(
+              direction: Axis.horizontal,
+              children: [
+                ...snapshot.data!.docs.map((DocumentSnapshot document) {
+                  return CategoryCard(document: document);
+                }).toList()
+              ],
+            );
+          }),
     );
   }
 }

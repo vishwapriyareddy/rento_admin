@@ -2,6 +2,7 @@ import 'package:ars_progress_dialog/ars_progress_dialog.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:rento_admin/screens/admin_users.dart';
 import 'package:rento_admin/screens/category_screen.dart';
 import 'package:rento_admin/screens/login_screen.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         SettingsScreen.id: (context) => SettingsScreen(),
         VendorsScreen.id: (context) => VendorsScreen(),
       },
+      builder: EasyLoading.init(),
     );
   }
 }

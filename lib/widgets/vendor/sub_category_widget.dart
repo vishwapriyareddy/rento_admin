@@ -24,16 +24,18 @@ class _SubCategoryWidgetState extends State<SubCategoryWidget> {
             height: MediaQuery.of(context).size.height,
             width: 300,
             child: FutureBuilder<DocumentSnapshot>(
-              future: _services.category.doc(widget.categoryName).get(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<DocumentSnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return Text("Something went wrong");
-                }
+                future: _services.category.doc(widget.categoryName).get(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return Text("Something went wrong");
+                  }
 
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (!snapshot.hasData) {
-                    return Center(child: Text('No SubCategories Added'));
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (snapshot.data!.exists == 0) {
+                    return Text('No Categories Added');
                   }
                   Map<String, dynamic> data =
                       snapshot.data!.data() as Map<String, dynamic>;
@@ -160,11 +162,7 @@ class _SubCategoryWidgetState extends State<SubCategoryWidget> {
                       ]))
                     ],
                   );
-                }
-
-                return Center(child: CircularProgressIndicator());
-              },
-            )),
+                })),
       ),
     );
   }
