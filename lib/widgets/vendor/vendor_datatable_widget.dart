@@ -65,6 +65,8 @@ class _VendorDataTableState extends State<VendorDataTable> {
           value: tag,
           onChanged: (val) {
             setState(() {
+              filter(val);
+
               tag = val;
             });
             filter(val);
@@ -133,7 +135,7 @@ class _VendorDataTableState extends State<VendorDataTable> {
                 : Icon(
                     Icons.remove_circle,
                     color: Colors.red,
-                  ))), 
+                  ))),
         DataCell(IconButton(
             onPressed: () {
               services.updateTopPickedStatus(

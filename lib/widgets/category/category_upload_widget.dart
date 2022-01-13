@@ -80,152 +80,160 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
         animationDuration: Duration(milliseconds: 500));
     return Form(
       key: _formKey,
-      child: Container(
-        color: Colors.grey,
-        width: MediaQuery.of(context).size.width,
-        height: 80,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30.0),
-          child: Row(
-            children: [
-              Container(
-                child: Row(
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade500,
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: Colors.grey.shade800)),
-                      child: Center(
-                          child: image == null
-                              ? const Text('Category Image')
-                              : Image.memory(image)),
-                    ),
-                    SizedBox(
-                      width: 200,
-                      height: 30,
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Category Name';
-                          }
-                        },
-                        controller: _categoryNameTextController,
-                        decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.black, width: 1)),
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'No category name given',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.only(left: 20)),
-                      ),
-                    ),
-                    // SizedBox(
-                    //     width: 200,
-                    //     height: 30,
-                    //     child: TextField(
-                    //       controller: _fileNameTextController,
-                    //       decoration: InputDecoration(
-                    //           focusedBorder: OutlineInputBorder(
-                    //               borderSide: BorderSide(
-                    //                   color: Colors.black, width: 1)),
-                    //           filled: true,
-                    //           fillColor: Colors.white,
-                    //           hintText: 'No Image Selected',
-                    //           border: OutlineInputBorder(),
-                    //           contentPadding: EdgeInsets.only(left: 20)),
-                    //     )),
-                    TextButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.black54)),
-                      onPressed: //() {
-                          // uploadStorage();
-                          //},
-                          pickImage,
-                      child: Center(
-                          child: Text(
-                        "Upload Image",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic),
-                      )),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    TextButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.black54)),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          saveImageToDb();
-                        }
-
-                        // if (_categoryNameTextController.text.isEmpty) {
-                        //   return await _services.showMyDialog(
-                        //       context: context,
-                        //       title: 'Add New Category',
-                        //       message: 'New Category name not given');
-                        // }
-                        // progressDialog.show();
-                        // _services
-                        //     .uploadCategoryImageToDb(
-                        //         _url, _categoryNameTextController.text)
-                        //     .then((downloadUrl) {
-                        //   if (downloadUrl != null) {
-                        //     progressDialog.dismiss();
-                        //     _services.showMyDialog(
-                        //       title: 'New Category',
-                        //       message: 'Saved New Category Successfully',
-                        //       context: context,
-                        //     );
-                        //   }
-                        // });
-                        // _categoryNameTextController.clear();
-                        // _fileNameTextController.clear();
-                      },
-                      child: image == null
-                          ? Container()
-                          : Center(
-                              child: Text(
-                              "Save New Category",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  fontStyle: FontStyle.italic),
-                            )),
-                    ),
-                  ],
-                ),
-              ),
-              TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black54)),
-                onPressed: () {
-                  clear;
-                  // setState(() {
-                  //   _visible = true;
-                  // });
-                },
-                child: Center(
-                    child: Text(
-                  "Cancel",
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontStyle: FontStyle.italic),
-                )),
-              ),
-            ],
+      child: Column(
+        children: [
+          Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: Colors.grey.shade800)),
+            child: Center(
+                child: image == null
+                    ? const Text('Category Image')
+                    : Image.memory(image)),
           ),
-        ),
+          Container(
+            color: Colors.grey,
+            width: MediaQuery.of(context).size.width,
+            height: 80,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30.0),
+              child: Row(
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 200,
+                          height: 30,
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Enter Category Name';
+                              }
+                            },
+                            controller: _categoryNameTextController,
+                            decoration: InputDecoration(
+                                focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.black, width: 1)),
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: 'No category name given',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.only(left: 20)),
+                          ),
+                        ),
+                        // SizedBox(
+                        //     width: 200,
+                        //     height: 30,
+                        //     child: TextField(
+                        //       controller: _fileNameTextController,
+                        //       decoration: InputDecoration(
+                        //           focusedBorder: OutlineInputBorder(
+                        //               borderSide: BorderSide(
+                        //                   color: Colors.black, width: 1)),
+                        //           filled: true,
+                        //           fillColor: Colors.white,
+                        //           hintText: 'No Image Selected',
+                        //           border: OutlineInputBorder(),
+                        //           contentPadding: EdgeInsets.only(left: 20)),
+                        //     )),
+                        TextButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.black54)),
+                          onPressed: //() {
+                              // uploadStorage();
+                              //},
+                              pickImage,
+                          child: Center(
+                              child: Text(
+                            "Upload Image",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic),
+                          )),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        TextButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.black54)),
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              saveImageToDb();
+                            }
+
+                            // if (_categoryNameTextController.text.isEmpty) {
+                            //   return await _services.showMyDialog(
+                            //       context: context,
+                            //       title: 'Add New Category',
+                            //       message: 'New Category name not given');
+                            // }
+                            // progressDialog.show();
+                            // _services
+                            //     .uploadCategoryImageToDb(
+                            //         _url, _categoryNameTextController.text)
+                            //     .then((downloadUrl) {
+                            //   if (downloadUrl != null) {
+                            //     progressDialog.dismiss();
+                            //     _services.showMyDialog(
+                            //       title: 'New Category',
+                            //       message: 'Saved New Category Successfully',
+                            //       context: context,
+                            //     );
+                            //   }
+                            // });
+                            // _categoryNameTextController.clear();
+                            // _fileNameTextController.clear();
+                          },
+                          child: image == null
+                              ? Container(
+                                  color: Colors.grey,
+                                )
+                              : Center(
+                                  child: Text(
+                                  "Save New Category",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                      fontStyle: FontStyle.italic),
+                                )),
+                        ),
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black54)),
+                    onPressed: () {
+                      clear;
+                      // setState(() {
+                      //   _visible = true;
+                      // });
+                      
+                    },
+                    child: Center(
+                        child: Text(
+                      "Cancel",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic),
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
