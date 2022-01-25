@@ -10,6 +10,7 @@ import 'package:rento_admin/screens/home_screen.dart';
 import 'package:rento_admin/screens/manage_banners.dart';
 import 'package:rento_admin/screens/notifications_screen.dart';
 import 'package:rento_admin/screens/orders_screen.dart';
+import 'package:rento_admin/screens/service_providers_boys.dart';
 import 'package:rento_admin/screens/settings_screen.dart';
 import 'package:rento_admin/screens/splash_screen.dart';
 import 'package:rento_admin/screens/vendors_screen.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         AdminUsers.id: (context) => AdminUsers(),
         SettingsScreen.id: (context) => SettingsScreen(),
         VendorsScreen.id: (context) => VendorsScreen(),
+        ServiceProviderBoys.id: (context) => ServiceProviderBoys(),
       },
       builder: EasyLoading.init(),
     );

@@ -8,6 +8,7 @@ import 'package:rento_admin/screens/login_screen.dart';
 import 'package:rento_admin/screens/manage_banners.dart';
 import 'package:rento_admin/screens/notifications_screen.dart';
 import 'package:rento_admin/screens/orders_screen.dart';
+import 'package:rento_admin/screens/service_providers_boys.dart';
 import 'package:rento_admin/screens/settings_screen.dart';
 import 'package:rento_admin/screens/vendors_screen.dart';
 
@@ -32,6 +33,11 @@ class SideBarWidget {
           title: 'Vendors',
           route: VendorsScreen.id,
           icon: CupertinoIcons.group_solid,
+        ),
+        MenuItem(
+          title: 'Service Providers',
+          route: ServiceProviderBoys.id,
+          icon: Icons.delivery_dining,
         ),
         MenuItem(
           title: 'Categories',

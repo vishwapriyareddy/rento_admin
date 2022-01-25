@@ -183,7 +183,7 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                             //     .then((downloadUrl) {
                             //   if (downloadUrl != null) {
                             //     progressDialog.dismiss();
-                            //     _services.showMyDialog(
+                            //     _servic   es.showMyDialog(
                             //       title: 'New Category',
                             //       message: 'Saved New Category Successfully',
                             //       context: context,
@@ -195,7 +195,7 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                           },
                           child: image == null
                               ? Container(
-                                  color: Colors.grey,
+                                  color: Colors.grey.shade100,
                                 )
                               : Center(
                                   child: Text(
@@ -218,7 +218,6 @@ class _CategoryCreateWidgetState extends State<CategoryCreateWidget> {
                       // setState(() {
                       //   _visible = true;
                       // });
-                      
                     },
                     child: Center(
                         child: Text(
