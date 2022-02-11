@@ -22,6 +22,7 @@ class _MyHomePageState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   var _usernameTextController = TextEditingController();
   var _passwordTextController = TextEditingController();
+  bool _visible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -167,10 +168,21 @@ class _MyHomePageState extends State<LoginScreen> {
 
                                         return null;
                                       },
-                                      obscureText: true,
+                                      obscureText:
+                                          _visible == false ? true : false,
                                       decoration: InputDecoration(
                                           helperText: 'Minimun 6 characters',
                                           prefixIcon: Icon(Icons.vpn_key_sharp),
+                                          suffixIcon: IconButton(
+                                            icon: _visible
+                                                ? Icon(Icons.visibility)
+                                                : Icon(Icons.visibility_off),
+                                            onPressed: () {
+                                              setState(() {
+                                                _visible = !_visible;
+                                              });
+                                            },
+                                          ),
                                           hintText: 'Password',
                                           contentPadding: EdgeInsets.only(
                                               left: 20, right: 20),

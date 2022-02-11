@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:rento_admin/providers/order_provider.dart';
 import 'package:rento_admin/screens/admin_users.dart';
 import 'package:rento_admin/screens/category_screen.dart';
 import 'package:rento_admin/screens/login_screen.dart';
@@ -14,12 +15,17 @@ import 'package:rento_admin/screens/service_providers_boys.dart';
 import 'package:rento_admin/screens/settings_screen.dart';
 import 'package:rento_admin/screens/splash_screen.dart';
 import 'package:rento_admin/screens/vendors_screen.dart';
+import 'package:provider/provider.dart';
 
 Future main() async {
+  Provider.debugCheckInvalidValueType = null;
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    Provider(create: (_) => OrderProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

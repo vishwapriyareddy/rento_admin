@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 
 class FirebaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
   CollectionReference banners = FirebaseFirestore.instance.collection('slider');
   CollectionReference vendors =
       FirebaseFirestore.instance.collection('vendors');
   CollectionReference category =
       FirebaseFirestore.instance.collection('category');
   CollectionReference boys = FirebaseFirestore.instance.collection('boys');
+  CollectionReference orders = FirebaseFirestore.instance.collection('orders');
   FirebaseStorage storage = FirebaseStorage.instance;
   Future<DocumentSnapshot> getAdmincredentials(id) {
     var result = FirebaseFirestore.instance.collection('Admin').doc(id).get();
@@ -167,5 +170,10 @@ class FirebaseServices {
         );
       },
     );
+  }
+
+  Future<DocumentSnapshot> getcustomerdetails(id) async {
+    DocumentSnapshot doc = await users.doc(id).get();
+    return doc;
   }
 }

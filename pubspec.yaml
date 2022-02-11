@@ -41,11 +41,12 @@ dependencies:
   flutter_admin_scaffold: ^1.0.0
   firebase_storage: ^10.2.3
   firebase: ^9.0.2
-  chips_choice: ^2.0.1
+  chips_choice_null_safety: ^2.0.4
   file_picker: ^4.2.8
   flutter_easyloading: ^3.0.3
   flutter_switch: ^0.3.2
-
+  provider: ^6.0.1
+  intl: ^0.17.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

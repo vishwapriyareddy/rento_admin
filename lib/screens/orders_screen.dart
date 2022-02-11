@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:rento_admin/widgets/orders/order_datatable.dart';
 import 'package:rento_admin/widgets/sidebar.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -26,12 +27,22 @@ class OrdersScreen extends StatelessWidget {
         child: Container(
           alignment: Alignment.topLeft,
           padding: const EdgeInsets.all(10),
-          child: Text(
-            'Orders Screen',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 36,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Orders Screen',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 36,
+                ),
+              ),
+              const Text('Manage all the Orders '),
+              const Divider(
+                thickness: 5,
+              ),
+              OrderDataTable()
+            ],
           ),
         ),
       ),

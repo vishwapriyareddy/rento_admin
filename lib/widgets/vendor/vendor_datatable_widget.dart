@@ -1,6 +1,5 @@
 import 'dart:html';
-
-import 'package:chips_choice/chips_choice.dart';
+import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +74,10 @@ class _VendorDataTableState extends State<VendorDataTable> {
             source: options,
             value: (i, v) => i,
             label: (i, v) => v,
+          ),
+          choiceStyle: C2ChoiceStyle(
+            color: Colors.green,
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
           ),
         ),
         Divider(
