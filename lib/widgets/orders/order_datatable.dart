@@ -70,6 +70,7 @@ class _OrderDataTableState extends State<OrderDataTable> {
         Container(
           child: StreamBuilder<QuerySnapshot?>(
               stream: _orderServices.orders
+                  .orderBy('timestamp', descending: true)
                   // .where(
                   //   'orderStatus',
                   // )
